@@ -11,13 +11,14 @@ class Process {
         std::string memory_;
         std::string time_;
     public: 
-        Process(std::string pid, std::string user, std::string cmd, std::string cpuPerc, std::string memory, std::string time){
-            pid_ = pid;
-            user_ = user;
-            cmd_ = cmd;
-            cpuPerc_ = cpuPerc;
-            memory_ = memory;
-            time_ = time;
+        Process(string pid)
+        {
+            this->pid = pid;
+            this->user = ProcessParser::getProcUser(pid);
+            this->mem = ProcessParser::getVmSize(pid);
+            this->cmd = ProcessParser::getCmd(pid);
+            this->up_time = ProcessParser::getProcUpTime(pid);
+            this->cpu  = ProcessParser::getCpuPercent(pid);
         }
         std::string getPid();
         std::string getUser();
@@ -25,11 +26,8 @@ class Process {
         std::string getCpuPercent();
         std::string getMemory();
         std::string getTime();
+        std::string getPRocess();
         void setPid(std::string pid);
-        void setUser(std::string user);
-        void setCmd(std::string cmd);
-        void setCpuPerc(std::string cpuPerc);
-        void setMemory(std::string memory);
         void setTime(std::string time);
 };
 
