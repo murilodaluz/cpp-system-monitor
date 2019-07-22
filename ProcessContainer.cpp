@@ -1,5 +1,5 @@
 void ProcessContainer::refreshList(){
-    std::vector<string> pids = ProcessParser::getPidList();
+    std::vector<std::string> pids = ProcessParser::getPidList();
     this->_list.clear();
     for (auto pid : pids) {
         Process proc(pid);
@@ -9,7 +9,7 @@ void ProcessContainer::refreshList(){
 
 std::string ProcessContainer::printList(){
     std::string result="";
-    for (auto i : _lists) {
+    for (auto i : _list) {
         result += i.getProcess();
     }
     return result;
@@ -19,8 +19,8 @@ std::vector<std::vector<std::string>> ProcessContainer::getList(){  //return typ
                                                                             //initialize and fetching the values of List
     std::vector<std::vector<std::string>> values;  //a vector of strings called values  
     std::vector<std::string> stringifiedList;
-    for(int i=0; i<ProcessContainer::_list.size(); i++){
-        stringifiedList.push_back(ProcessContainer::_list[i].getProcess());
+    for (auto i : _list) {
+        stringifiedList.push_back(i.getProcess());
     }
     int lastIndex = 0;
     for (int i=0; i<stringifiedList.size();i++){  //the example has size -10 as starting point of iterator??
