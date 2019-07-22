@@ -6,11 +6,11 @@
 using namespace std;
 
 enum CPUStates {
-    S_USER = 1,
-    S_NICE,
-    S_SYSTEM,
-    S_IDLE,
-    S_IOWAIT,
+    S_USER = 1,  //setting this equal to 1 means that:
+	S_NICE,      //this = 2,
+	S_SYSTEM,     //this = 3,
+	S_IDLE,        //this = 4,
+	S_IOWAIT,      // and so on....
     S_IRQ,
     S_SOFTIRQ,
     S_STEAL,
@@ -20,32 +20,25 @@ enum CPUStates {
 
 class Path {
     public:
-        static string basePath() 
-        {
+        static string basePath() {
             return "/proc/";
         }
-        static string cmdPath()
-        {
+        static string cmdPath(){
             return "/cmdline";
         }
-        static string statusPath()
-        {
+        static string statusPath(){
             return "/status";
         }
-        static string statPath()
-        {
-            return "stat";
+        static string statPath(){
+            return "/stat";
         }
-        static string upTimePath()
-        {
+        static string upTimePath(){
             return "uptime";
         }
-        static string memInfoPath()
-        {
+        static string memInfoPath(){
             return "meminfo";
         }
-        static string versionPath()
-        {
+        static string versionPath(){
             return "version";
         }
 };

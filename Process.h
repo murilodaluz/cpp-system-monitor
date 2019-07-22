@@ -1,34 +1,32 @@
 #ifndef PROCESS 
 #define PROCESS
-#include<string>;
+#include<string>
 
 class Process {
     private:
-        std::string pid_;
-        std::string user_;
-        std::string cmd_;
-        std::string cpuPerc_;
-        std::string memory_;
-        std::string time_;
+        std::string pid;
+        std::string user;
+        std::string cmd;
+        std::string cpuPerc;
+        std::string memory;
+        std::string upTime;
     public: 
-        Process(string pid)
-        {
+        Process(std::string pid){
             this->pid = pid;
             this->user = ProcessParser::getProcUser(pid);
-            this->mem = ProcessParser::getVmSize(pid);
+            this->memory = ProcessParser::getVmSize(pid);
             this->cmd = ProcessParser::getCmd(pid);
-            this->up_time = ProcessParser::getProcUpTime(pid);
-            this->cpu  = ProcessParser::getCpuPercent(pid);
+            this->upTime = ProcessParser::getProcUpTime(pid);
+            this->cpuPerc  = ProcessParser::getCpuPercent(pid);
         }
-        std::string getPid();
-        std::string getUser();
-        std::string getCmd();
-        std::string getCpuPercent();
-        std::string getMemory();
-        std::string getTime();
-        std::string getPRocess();
         void setPid(std::string pid);
-        void setTime(std::string time);
+        std::string getPid() const;
+        std::string getUser() const;
+        std::string getCmd() const;
+        std::string getCpuPercent() const;
+        std::string getMemory() const;
+        std::string getTime() const;
+        std::string getProcess() const;
 };
 
 #endif

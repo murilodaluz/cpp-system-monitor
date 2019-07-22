@@ -26,7 +26,7 @@ string SysInfo::getThreads() const {
     return to_string(this->threads);
 }
 
-string SysInfo::getOsName() const {
+string SysInfo::getOSName() const {
     return this->osName;
 }
 

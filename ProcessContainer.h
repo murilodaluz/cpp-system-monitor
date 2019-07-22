@@ -3,20 +3,18 @@
 #include "Process.h"
 #include <string>
 #include <vector>
-using std::string;
-using std::vector;
 
 class ProcessContainer {
+    private:
+        std::vector<Process>_list;
+        
     public:
         ProcessContainer()
         {
             this->refreshList();
         }
         void refreshList();
-        string printList();
-        vector<string> getList();
-
-    private:
-        vector<Process>_list;
+        std::string printList();
+        std::vector<std::vector<std::string>> getList();
 };
 #endif

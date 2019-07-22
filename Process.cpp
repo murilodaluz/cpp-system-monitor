@@ -1,30 +1,30 @@
 #include "Process.h"
 
 int Process::getPid(){
-    return Process::pid_;
+    return Process::pid;
 }
 std::string Process::getUser(){
-    return Process::user_;
+    return Process::user;
 }
 std::string Process::getCmd(){
-    return Process::cmd_;
+    return Process::cmd;
 }
 double Process::getCpuPerc(){
-    return Process::cpuPerc_;
+    return Process::cpuPerc;
 }
 double Process::getMemory(){
-    return Process::memory_;
+    return Process::memory;
 }
 std::string Process::getTime(){
-    return Process::time_;
+    return Process::time;
 }
 void Process::setPid(int pid){
-    Process::pid_ = pid;
+    Process::pid = pid;
 }
 
 string Process::getProcess(){
     this->mem = ProcessParser::getVmSize(this->pid);
-    this->up_time = ProcessParser::getProcUpTime(this->pid);
+    this->upTime = ProcessParser::getProcUpTime(this->pid);
     this->cpu = ProcessParser::getCpuPercent(this->pid);
 
     return (this->pid + "   "
@@ -34,7 +34,7 @@ string Process::getProcess(){
                     + "     "
                     + this->cpu.substr(0,5)
                     + "     "
-                    + this->up_time.substr(0,5)
+                    + this->upTime.substr(0,5)
                     + "    "
                     + this->cmd.substr(0,30)
                     + "...");

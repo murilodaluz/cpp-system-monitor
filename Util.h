@@ -12,7 +12,7 @@ class Util{
 public:
     static std::string convertToTime(long int input_seconds);
     static std::string getProgressBar(std::string percent);
-    static std::ifstream getStream(std::string path);
-    static std::vector<string> Util::getValuesLineFromPath(string path);
+    static std::string getStream(std::string path, std::ifstream& stream);
+    static std::vector<std::string> getValuesLineFromPath(std::string path);
 };
 #endif
