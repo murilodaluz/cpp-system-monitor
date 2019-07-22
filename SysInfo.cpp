@@ -1,3 +1,5 @@
+#include "SysInfo.h"
+
 std::string SysInfo::getCpuPercent() const {
     return this->cpuPercent;
 }
