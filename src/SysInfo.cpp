@@ -50,10 +50,10 @@ void SysInfo::getOtherCores(int _size){
 }
 
 void SysInfo::setCpuCoresStats(){
-    for (unsigned int i = 0; i < this->currentCpuCoresStats.size(); i++) {
+    for (std::size_t i = 0; i < this->currentCpuCoresStats.size(); i++) {
         this->currentCpuCoresStats[i] = ProcessParser::getSysCpuPercent(to_string(i));
     }
-    for (unsigned int i = 0; i < this->currentCpuCoresStats.size(); i++) {
+    for (std::size_t i = 0; i < this->currentCpuCoresStats.size(); i++) {
         this->coresStats[i] = ProcessParser::printCpuStats(this->lastCpuCoresStats[i], this->currentCpuCoresStats[i]);
     }
     this->lastCpuCoresStats = this->currentCpuCoresStats;
@@ -73,7 +73,7 @@ void SysInfo::setAttributes() {
 
 std::vector<std::string> SysInfo::getCoresStats() const{
     std::vector<std::string> result = std::vector<std::string>();
-    for (unsigned int i = 0; i < this->coresStats.size(); i++) {
+    for (std::size_t i = 0; i < this->coresStats.size(); i++) {
         std::string temp = ("cpu" + to_string(i) + ": ");
         float check;
         if (!this->coresStats[i].empty()){

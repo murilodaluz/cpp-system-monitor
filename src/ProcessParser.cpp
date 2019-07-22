@@ -20,6 +20,15 @@
 #include <time.h>
 #include <unistd.h>
 
+bool ProcessParser::isPidExisting(std::string pid){
+    std::vector<std::string> pids = ProcessParser::getPidList();
+    for(auto i : pids){
+        if (i == pid)
+        return true;
+    }
+    return false;
+}
+
 std::string ProcessParser::getVmSize(std::string pid){
     std::string line;
     // Valor de referencia
@@ -275,7 +284,7 @@ int ProcessParser::getTotalThreads(){
     int result = 0;
     std::string name = "Threads:";
     std::vector<std::string>_list = ProcessParser::getPidList();
-    for (unsigned int i=0 ; i < _list.size();i++) {
+    for (std::size_t i=0 ; i < _list.size();i++) {
         std::string pid = _list[i];
         //getting every process and reading their number of their threads
         ifstream stream;
@@ -289,8 +298,8 @@ int ProcessParser::getTotalThreads(){
                 break;
             }
         }
-        return result;
     }
+    return result;
 }
 
 int ProcessParser::getTotalNumberOfProcesses(){

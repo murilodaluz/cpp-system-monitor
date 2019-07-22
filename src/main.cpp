@@ -29,7 +29,7 @@ void writeSysInfoToConsole(SysInfo sys, WINDOW *sys_win){
     mvwprintw(sys_win, 5, 2, getCString(("Other cores:")));
     wattron(sys_win, COLOR_PAIR(1));
     std::vector<std::string> val = sys.getCoresStats();
-    for (int i = 0; i < val.size(); i++){
+    for (std::size_t i = 0; i < val.size(); i++){
         mvwprintw(sys_win, (6 + i), 2, getCString(val[i]));
     }
     wattroff(sys_win, COLOR_PAIR(1));
@@ -53,7 +53,7 @@ void getProcessListToConsole(std::vector<std::string> processes, WINDOW *win){
     mvwprintw(win, 1, 35, "Uptime:");
     mvwprintw(win, 1, 44, "CMD:");
     wattroff(win, COLOR_PAIR(2));
-    for (int i = 0; i < processes.size(); i++){
+    for (std::size_t i = 0; i < processes.size(); i++){
         mvwprintw(win, 2 + i, 2, getCString(processes[i]));
     }
 }
@@ -70,7 +70,7 @@ void printMain(SysInfo sys, ProcessContainer procs){
 
     init_pair(1, COLOR_BLUE, COLOR_BLACK);
     init_pair(2, COLOR_GREEN, COLOR_BLACK);
-    int counter = 0;
+    std::size_t counter = 0;
     while (1){
         box(sys_win, 0, 0);
         box(proc_win, 0, 0);
@@ -92,7 +92,7 @@ void printMain(SysInfo sys, ProcessContainer procs){
     endwin();
 }
 
-int main(int argc, char *argv[]){
+int main(){
     //Object which contains list of current processes, Container for Process Class
     ProcessContainer procs;
     // Object which containts relevant methods and attributes regarding system details
